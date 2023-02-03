@@ -1,0 +1,97 @@
+Q1 - Write a program to check whether two numbers (entered by user) are equal or not.
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    int n1,n2;
+    cin>>n1>>n2;
+    if(n1==n2){
+        cout<<"1";
+    }
+    else{
+        cout<<"0";
+    }
+}
+---------------------------------------------------------------------------------
+Q2 - Write a program to take the values of two variables a and b from the keyboard and then check if
+both the conditions 'a < 50' and 'a < b' are true.
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    int a,b;
+    cin>>a>>b;
+    if(a<50 && a<b){
+        cout<<"0";
+    }
+    else{
+        cout<<"1";
+    }
+}
+----------------------------------------------------------------------------------
+Q3 - There are 45 total pupils in the class, 25 of whom are boys. Write a program to find how many
+girls received grades "A" if 17 boys made up 80% of the students that received grades "A".
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    int total, boys, girls;
+    boys = 17;
+    total = (80*45)/100; 
+    girls = total - boys;
+    cout << "Number of girls getting grade A = " << girls << endl;
+    return 0;
+}
+----------------------------------------------------------------------------------
+Q4 - Write a program to calculate the sum of the first and the second last digit of a 5 digit number.
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    int n=12345,first,second,third,fourth,fifth;
+    first=n/10000;
+    n=n%10000;
+    second=n/1000;
+    n=n%1000;
+    third=n/100;
+    n=n%100;
+    fourth=n/10;
+    n=n%10;
+    cout<<"Sum of first and fourth digit of number is: "<<first+fourth;
+}
+-------------------------------------------------------------------------------
+Q5 - Write a program to calculate the sum of digits of a 3 digit number.
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    int n,sum=0,d;
+    cin>>n;
+    while(n>0){
+        d=n%10;
+        sum+=d;
+        n=n/10;
+    }
+    cout<<"Sum of three digit number is: "<<sum;
+}
+----------------------------------------------------------------------------
+Q6 - Design a calculator to perform basic arithmetic operations (+,-,/,*,%)
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    char ch;
+    int a,b;
+    cout<<"Enter two numbers: ";
+    cin>>a>>b;
+    cout<<"\nEnter character like  \n + -for addition \n - -for subtraction \n * -for multiplication \n / -for division ";
+    cin>>ch;
+    switch(ch){
+        case '+': cout<<"Addition of two numbers: "<<a+b; break;
+        case '-': cout<<"Subtraction of two numbers: "<<a-b; break;
+        case '*': cout<<"Multiplication of two numbers: "<<a*b; break;
+        case '/': cout<<"divison of two numbers: "<<a/b; break;
+        default:
+        cout<<"\nEntered Invalid character";
+    }
+}
