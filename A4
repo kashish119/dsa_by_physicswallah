@@ -1,0 +1,245 @@
+Q1 - Write a program to calculate the factorial of a number.
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    int n,fact=1;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        fact*=i;
+    }
+    cout<<fact;
+}
+-----------------------------------------------------------------------------------------
+Q2 - Write a program to print all Armstrong numbers between 100 to 500.
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    for(int i=0;i<=500;i++){
+        int sum=0,d,t=i;
+        while(t!=0){
+            d=t%10;
+            sum+=d*d*d;
+            t=t/10;
+        }
+        if(sum==i){
+            cout<<i<<"\n";
+        }
+    }
+}
+-------------------------------------------------------------------------------------
+Q3 - Write a program to find the sum of n natural numbers.
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    int n,sum=0;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        sum+=i;
+    }
+    cout<<sum;
+}
+-----------------------------------------------------------------------------------
+Q4 - Write a program to reverse a given integer number.
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    int n,d,rev=0;
+    cin>>n;
+    while(n>0){
+        d=n%10;
+        rev=(rev*10)+d;
+        n=n/10;
+    }
+    cout<<rev;
+}
+-------------------------------------------------------------------------------
+Q5 - Write a program to print the cross pattern given below (in the shape of X):
+*   *
+ * *
+  *
+ * *
+*   *
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            if(i==j || i+j==n-1){
+                cout<<"*";
+            }
+            else{
+                cout<<" ";
+            }
+        }
+        cout<<endl;
+    }
+}
+--------------------------------------------------------------------------------
+Q6- Write a program to print alphabet diamond pattern:
+    A
+   ABC
+  ABCDE
+ ABCDEFG
+ABCDEFGHI
+ ABCDEFG
+  ABCDE
+   ABC
+    A
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    //upside pyramid
+    for(int i=1;i<=n;i++){
+        for(int space=1;space<=n-i;space++){
+            cout<<" ";
+        }
+        char ch='A';
+        for(int j=1;j<=2*i-1;j++){
+            cout<<ch;
+            ch++;
+        }
+        cout<<endl;
+    }
+    //downside pyramid
+    for(int i=1;i<=n-1;i++){
+        for(int space=1;space<=i;space++){
+            cout<<" ";
+        }
+        char ch='A';
+        for(int j=(n-i)*2-1;j>0;j--){
+            cout<<ch;
+            ch++;
+        }
+        cout<<endl;
+    }
+}
+-------------------------------------------------------------------------------
+Q7- Write a program to print + pattern given below :
+    *
+    *
+  *****
+    *
+    *
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            if(i==n/2){
+                cout<<"*";
+            }
+            else{
+                if(j==n/2){
+                    cout<<"*";
+                }
+                else{
+                    cout<<" ";
+                }
+            }
+        }
+        cout<<endl;
+    }
+}
+---------------------------------------------------------------------------------
+Q8 - Write a C++ program to print a triangle of prime numbers upto given number of lines of the triangle.
+2
+3 5
+7 11 13
+17 19 23 29
+31 37 41 43 47
+53 59 61 67 71 73
+Solution:
+#include<iostream>
+using namespace std;
+int prime(int num) {
+   int i, isPrime = 1;
+   for (i = 2; i <= (num/2); i++) {
+      if (num % i == 0){
+         isPrime = 0;
+         break;
+      }
+   }
+   if (isPrime==1 || num==2)
+      return 1;
+   else
+      return 0;
+}
+int main(){
+    int n;
+    cin>>n;
+    int count=2;
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=i;j++){
+            while(!prime(count)){
+                count++;
+            }
+            cout<<count<<" ";
+            count++;
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+--------------------------------------------------------------------------------
+Q9- Write a C++ program to check whether a Number can be expressed as a Sum of Two Prime Numbers.
+Solution:
+#include<iostream>
+using namespace std;
+int prime(int num) {
+   int i, isPrime = 1;
+   for (i = 2; i <= (num/2); i++) {
+      if (num % i == 0){
+         isPrime = 0;
+         break;
+      }
+   }
+   if (isPrime==1 || num==2)
+      return 1;
+   else
+      return 0;
+}
+int main(){
+    int n;
+    bool isPrime=0;
+    cout<<"Enter a number: ";
+    cin>>n;
+    for(int i=2;i<=n/2;i++){
+        if(prime(i)){
+            if(prime(n-i)){
+                cout<<n<<" = "<<i<<" + "<<n-i<<"\n";
+                isPrime=1;
+            }
+        }
+    }
+    if(!isPrime){
+        cout<<"No can't be expressed as sum of two prime number.";
+    }
+}
+------------------------------------------------------------------------------------
+Q10- Write a C++ program to print a rectangle out of *
+Solution:
+#include<iostream>
+using namespace std;
+int main(){
+    int row,col;
+    cin>>row>>col;
+    for(int i=1;i<=row;i++){
+        for(int j=1;j<=col;j++){
+            cout<<"* ";
+        }
+        cout<<endl;
+    }   
+}
