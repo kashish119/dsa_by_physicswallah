@@ -1,0 +1,75 @@
+Q1 - Print the sum of the first 5 decimal numbers from 1 to 5 in binary format.
+Solution:
+#include<iostream>
+using namespace std;
+int main (){
+    int sum=0,ans=0,pow=1,pd;
+    for(int i=1;i<=5;i++){
+            sum+=i;
+        }
+     while(sum>0){
+            pd=sum%2;
+            ans+=pd*pow;
+            pow*=10;
+            sum/=2;
+        }
+    cout<<ans;
+}
+----------------------------------------------------------------------------------------
+Q2 - Given a natural number, find the number of 0’s in the binary representation of that number.
+Note: Don’t count the preceding zeros.
+For example: 001001 has 2 zeros as the first two zeros from left are preceding zeros.
+Solution:
+#include <iostream>
+using namespace std;
+int main()
+{
+int num;
+cout<<"Enter the decimal number : ";
+cin>>num;
+int count=0;
+while (num > 0) {
+int parity = num % 2;
+if(parity==0)
+{
+count++;
+}
+num /= 2;
+}
+cout << "The number of zeros is : " <<count<< endl;
+}
+----------------------------------------------------------------------------------------
+Q3 - Given two binary numbers, return the greatest of these numbers in decimal format.
+Solution:
+#include <iostream>
+using namespace std;
+int main()
+{
+    int n1,n2;
+    cout<<"Enter the two binary numbers : ";
+    cin>>n1>>n2;
+    int pow = 1,dec1=0,dec2=0;
+    while (n1 > 0) { 
+    //converting num1 to decimal
+    int d=n1%10;
+    dec1+=pow*d;
+    n1/=10;
+    pow*=2;
+    }
+    pow=1;
+    while (n2>0) { 
+    //converting num2 to decimal
+    int d=n2%10;
+    dec2+=pow*d;
+    n2/=10;
+    pow*=2;
+    }
+    if(dec1>dec2) 
+    //comparing the decimal numbers dec1 and dec2
+    {  
+        cout<<"The greater number is : "<<dec1;
+    }
+    else{
+        cout<<"The greater number is : "<<dec2;
+    }
+}
