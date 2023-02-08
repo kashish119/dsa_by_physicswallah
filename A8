@@ -1,0 +1,220 @@
+Q1 - Given two vectors arr1[] and arr2[] of size m and n sorted in increasing order. Merge the
+two arrays into a single sorted array of size m+n.
+Solution:
+#include<iostream>
+using namespace std;
+void mergeArray(int arr1[],int m,int arr2[],int n,int arr3[]){
+    int i=0,j=0,k=0;
+    while(i<m && j<n){
+        if(arr1[i]<arr2[j]){
+            arr3[k++]=arr1[i++];
+        }
+        else{
+            arr3[k++]=arr2[j++];
+        }
+    }
+    while(i<n){
+        arr3[k++]=arr1[i++];
+    }
+    while(j<m){
+        arr3[k++]=arr2[j++];
+    }
+}
+void print(int ans[],int n){
+    for(int i=0;i<n;i++){
+        cout<<ans[i]<<" ";
+    }
+    cout<<endl;
+}
+int main(){
+    int m,n;
+    cout<<"Enter size of arr1 and arr2: ";
+    cin>>m>>n;
+    int arr1[m],arr2[n];
+    cout<<"Enter elements of array 1: ";
+    for(int i=0;i<m;i++){
+        cin>>arr1[i];
+    }
+    cout<<"Enter elements of array 2: ";
+    for(int j=0;j<n;j++){
+        cin>>arr2[j];
+    }
+    int arr3[m+n]={0};
+    mergeArray(arr1,m,arr2,n,arr3);
+    print(arr3,m+n);
+}
+--------------------------------------------------------------------------------------------
+Q2 - Given a vector arr[] sorted in increasing order of n size and an integer x, find if there exists
+a pair in the array whose sum is exactly x.
+Solution:
+#include<iostream>
+using namespace std;
+int sumpair(int arr[],int n,int x){
+    for(int i=0;i<n-1;i++){
+        for(int j=i+1;j<n;j++){
+            if(arr[i]+arr[j]==x){
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+int main(){
+    int n;
+    cout<<"Enter number of element: ";
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int x;
+    cout<<"Enter a number to search sum of pair in an array: ";
+    cin>>x;
+    if(sumpair(arr,n,x)){
+        cout<<"Yes";
+    }
+    else{
+        cout<<"No";
+    }
+    return 0;
+}
+-------------------------------------------------------------------------------------------
+Q3 - Given a vector arr[] sorted in increasing order of n size and an integer x, find if there exists
+a pair in the array whose absolute difference is exactly x.
+Solution:
+#include<iostream>
+using namespace std;
+int diffpair(int arr[],int n,int x){
+    for(int i=0;i<n-1;i++){
+        for(int j=i+1;j<n;j++){
+            if(arr[j]-arr[i]==x){
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+int main(){
+    int n;
+    cout<<"Enter number of element: ";
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int x;
+    cout<<"Enter a number to search diff of pair in an array: ";
+    cin>>x;
+    if(diffpair(arr,n,x)){
+        cout<<"Yes";
+    }
+    else{
+        cout<<"No";
+    }
+    return 0;
+}
+-------------------------------------------------------------------------------------------
+Q4 - Given a arr[] sorted in increasing order. Return an array of squares of each
+number sorted in increasing order. Where size is 1<size<101.
+Solution:
+#include<bits/stdc++.h>
+using namespace std;
+void sortSquare(int arr[], int n)
+{
+    // First convert each array elements
+    // into its square
+    for (int i = 0; i < n; i++){
+        arr[i] = arr[i] * arr[i];
+    }
+    sort(arr, arr + n);
+}
+int main(){
+    int n;
+    cout<<"Enter number of element: ";
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    sortSquare(arr,n);
+         for (int i = 0; i < n; i++){
+            cout << arr[i] << " ";
+        }
+    return 0;
+}
+------------------------------------------------------------------------------------------
+Q5 - Given a vector arr[] sorted in increasing order of n size and an integer x, find the number
+of unique pairs that exist in the array whose absolute sum is exactly x.
+Solution:
+#include<iostream>
+using namespace std;
+int uniquesumpair(int arr[],int n,int x){
+    int ans = 0;
+    int i=0, j=n-1;
+    while(i < j){
+        if(arr[i] + arr[j] == x){ 
+            ans++;
+            i++;
+            j--;
+        }
+        else if(arr[i] + arr[j] > x) 
+            j--; 
+        else 
+            i++; 
+    }
+    return ans;
+}
+int main(){
+    int n;
+    cout<<"Enter number of element: ";
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int x;
+    cout<<"Enter a number to search sum of pair in an array: ";
+    cin>>x;
+    cout<<uniquesumpair(arr,n,x);
+    return 0;
+}
+------------------------------------------------------------------------------------------
+Q6 - Given a vector array nums, print the count of triplets [nums[i], nums[j], nums[k]] such
+that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == x. Where k is an integer
+given by the user.
+Solution:
+#include <bits/stdc++.h>
+using namespace std;
+int find_all_triplets(int arr[], int n, int sum)
+{
+    int count=0;
+    for(int i=0;i<n-2;i++){
+        for(int j=i+1;j<n-1;j++){
+            for(int k=j+1;k<n;k++){
+                    if (arr[i] + arr[j] + arr[k] == sum){
+                        // cout << arr[i] << “,” << arr[j] << “,” << arr[k] <<endl;
+                        // if to print triplets
+                        count++;
+                    }
+            }
+        }
+    }
+    return count;
+}
+
+int main()
+{
+int n, sum;
+cout<<"\nEnter the number of elements : ";
+cin>>n;
+int arr[n];
+cout<<"\nInput the array elements : ";
+for(int i = 0; i < n; i++)
+{
+cin >> arr[i];
+}
+cout<<"\nEnter the sum value : ";
+cin >> sum;
+cout<<find_all_triplets(arr, n, sum);
+return 0;
+}
